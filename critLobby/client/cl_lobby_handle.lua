@@ -131,15 +131,62 @@ AddEventHandler('lobbymenu:SetDetailsCashRPandAP', function(_id, _cashValue, _rp
 end)
 
 
-AddEventHandler('lobbymenu:AddButton', function(_id, _buttonParams, _text, _rightText, _showRockStarSymbol, _rightSymbol, _buttonEvent)
+AddEventHandler('lobbymenu:AddStandardButton', function(_id, _buttonParams, _text, _rightText, _showRockStarSymbol, _rightSymbol, _buttonEvent)
     if menuList[_id] ~= nil then
         local rplus = ""
         if _showRockStarSymbol == true then
             rplus = "1"
         end
         local row = #menuList[_id]['buttons']+1
-        menuList[_id]['buttons'][row] = {text = _text, RockStarLogo = rplus, rightText = _rightText, symbol = _rightSymbol, buttonParams = _buttonParams, event = _buttonEvent}
-        --print(row)
+        menuList[_id]['buttons'][row] = {text = _text, type = 1 RockStarLogo = rplus, rightText = _rightText, symbol = _rightSymbol, buttonParams = _buttonParams, event = _buttonEvent}
+    else
+        print('-=[[ :: WARNING :: YOU TRIED TO ADD A BUTTON FOR A NON-EXISTENT MENU ID :: ]]=-')
+    end
+end)
+
+AddEventHandler('lobbymenu:AddListButton', function(_id, _buttonParams, _text, _itemList, _buttonEvent)
+    if menuList[_id] ~= nil then
+        local row = #menuList[_id]['buttons']+1
+        menuList[_id]['buttons'][row] = {text = _text, type = 0 RockStarLogo = "", rightText = _itemList[1], selectedItem = 1 symbol = 0, buttonParams = _buttonParams, itemList = _itemList, event = _buttonEvent}
+    else
+        print('-=[[ :: WARNING :: YOU TRIED TO ADD A BUTTON FOR A NON-EXISTENT MENU ID :: ]]=-')
+    end
+end)
+
+AddEventHandler('lobbymenu:AddDisabledButton', function(_id, _buttonParams, _text, _rightText, _showRockStarSymbol, _rightSymbol, _buttonEvent)
+    if menuList[_id] ~= nil then
+        local rplus = ""
+        if _showRockStarSymbol == true then
+            rplus = "1"
+        end
+        local row = #menuList[_id]['buttons']+1
+        menuList[_id]['buttons'][row] = {text = _text, type = 2 RockStarLogo = rplus, rightText = _rightText, symbol = _rightSymbol, buttonParams = _buttonParams, event = _buttonEvent}
+    else
+        print('-=[[ :: WARNING :: YOU TRIED TO ADD A BUTTON FOR A NON-EXISTENT MENU ID :: ]]=-')
+    end
+end)
+
+AddEventHandler('lobbymenu:AddValuesButton', function(_id, _buttonParams, _text, _rightText, _showRockStarSymbol, _rightSymbol, _buttonEvent)
+    if menuList[_id] ~= nil then
+        local rplus = ""
+        if _showRockStarSymbol == true then
+            rplus = "1"
+        end
+        local row = #menuList[_id]['buttons']+1
+        menuList[_id]['buttons'][row] = {text = _text, type = 3 RockStarLogo = rplus, rightText = _rightText, symbol = _rightSymbol, buttonParams = _buttonParams, event = _buttonEvent}
+    else
+        print('-=[[ :: WARNING :: YOU TRIED TO ADD A BUTTON FOR A NON-EXISTENT MENU ID :: ]]=-')
+    end
+end)
+
+AddEventHandler('lobbymenu:AddFlickeringButton', function(_id, _buttonParams, _text, _rightText, _showRockStarSymbol, _rightSymbol, _buttonEvent)
+    if menuList[_id] ~= nil then
+        local rplus = ""
+        if _showRockStarSymbol == true then
+            rplus = "1"
+        end
+        local row = #menuList[_id]['buttons']+1
+        menuList[_id]['buttons'][row] = {text = _text, type = 4 RockStarLogo = rplus, rightText = _rightText, symbol = _rightSymbol, buttonParams = _buttonParams, event = _buttonEvent}
     else
         print('-=[[ :: WARNING :: YOU TRIED TO ADD A BUTTON FOR A NON-EXISTENT MENU ID :: ]]=-')
     end
